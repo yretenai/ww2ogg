@@ -10,6 +10,7 @@
 
 #include "errors.h"
 #include "crc.h"
+#include "ww2ogg_export.h"
 
 // host-endian-neutral integer reading
 namespace {
@@ -168,7 +169,7 @@ namespace {
 }
 
 // using an istream, pull off individual bits with get_bit (LSB first)
-class Bit_stream {
+class WW2OGG_EXPORT Bit_stream {
     std::istream& is;
 
     unsigned char bit_buffer;
@@ -203,7 +204,7 @@ public:
     }
 };
 
-class Bit_oggstream {
+class WW2OGG_EXPORT Bit_oggstream {
     std::ostream& os;
 
     unsigned char bit_buffer;
@@ -328,7 +329,7 @@ public:
 // integer of a certain number of bits, to allow reading just that many
 // bits from the Bit_stream
 template <unsigned int BIT_SIZE>
-class Bit_uint {
+class WW2OGG_EXPORT Bit_uint {
     unsigned int total;
 public:
     class Too_many_bits {};
@@ -373,7 +374,7 @@ public:
 
 // integer of a run-time specified number of bits
 // bits from the Bit_stream
-class Bit_uintv {
+class WW2OGG_EXPORT Bit_uintv {
     unsigned int size;
     unsigned int total;
 public:
@@ -417,7 +418,7 @@ public:
     }
 };
 
-class array_streambuf : public std::streambuf
+class WW2OGG_EXPORT array_streambuf : public std::streambuf
 {
     // Intentionally undefined
     array_streambuf& operator=(const array_streambuf& rhs);

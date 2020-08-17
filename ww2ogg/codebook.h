@@ -9,8 +9,6 @@
 #include "errors.h"
 #include "Bit_stream.h"
 
-using namespace std;
-
 /* stuff from Tremor (lowmem) */
 namespace {
 int ilog(unsigned int v){
@@ -49,7 +47,7 @@ unsigned int _book_maptype1_quantvals(unsigned int entries, unsigned int dimensi
 
 }
 
-class codebook_library
+class WW2OGG_EXPORT codebook_library
 {
     char * codebook_data;
     long * codebook_offsets;
@@ -60,7 +58,7 @@ class codebook_library
     codebook_library(const codebook_library& rhs);
 
 public:
-    codebook_library(const string& filename);
+    codebook_library(const std::string& filename);
     codebook_library(void);
 
     ~codebook_library()

@@ -11,9 +11,9 @@
 #include "stdint.h"
 #include "errors.h"
 
-#define VERSION "0.24"
+#include "ww2ogg_export.h"
 
-using namespace std;
+#define VERSION "0.24"
 
 enum ForcePacketFormat {
     kNoForcePacketFormat,
@@ -22,11 +22,11 @@ enum ForcePacketFormat {
 };
 
 
-class Wwise_RIFF_Vorbis
+class WW2OGG_EXPORT Wwise_RIFF_Vorbis
 {
-    string _file_name;
-    string _codebooks_name;
-    ifstream _infile;
+    std::string _file_name;
+    std::string _codebooks_name;
+    std::ifstream _infile;
     long _file_size;
 
     bool _little_endian;
@@ -66,16 +66,14 @@ class Wwise_RIFF_Vorbis
     uint32_t (*_read_32)(std::istream &is);
 public:
     Wwise_RIFF_Vorbis(
-      const string& name,
-      const string& _codebooks_name,
+      const std::string& name,
+      const std::string& _codebooks_name,
       bool inline_codebooks,
       bool full_setup,
       ForcePacketFormat force_packet_format
       );
 
-    void print_info(void);
-
-    void generate_ogg(ofstream& of);
+    void generate_ogg(std::ofstream& of);
     void generate_ogg_header(Bit_oggstream& os, bool * & mode_blockflag, int & mode_bits);
     void generate_ogg_header_with_triad(Bit_oggstream& os);
 };

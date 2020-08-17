@@ -19,3 +19,9 @@
 *.exe
 *.out
 *.app
+ww2ogg_export_win32.h
+ww2ogg_export_cl.h
+cmake
+build
+cmake-*
+.idea
